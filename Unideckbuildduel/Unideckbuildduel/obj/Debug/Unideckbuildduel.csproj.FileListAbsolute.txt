@@ -1,0 +1,12 @@
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\bin\Debug\Unideckbuildduel.exe.config
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\bin\Debug\Unideckbuildduel.exe
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\bin\Debug\Unideckbuildduel.pdb
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.csproj.AssemblyReference.cache
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.csproj.SuggestedBindingRedirects.cache
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.Properties.Resources.resources
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.View.StartupDialog.resources
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.View.Window.resources
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.csproj.GenerateResource.cache
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.csproj.CoreCompileInputs.cache
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.exe
+Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.pdb

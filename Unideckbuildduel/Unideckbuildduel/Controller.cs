@@ -41,11 +41,11 @@ namespace Unideckbuildduel
         {
             string playerOneName = "First";
             string playerTwoName = "Second";
-            //StartupDialog sd = new StartupDialog();
-            //if (sd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    NumbersOfTurnsToGo = sd.TurnLimit;
-            //}
+            StartupDialog sd = new StartupDialog();
+            if (sd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                NumbersOfTurnsToGo = sd.TurnLimit;
+            }
             Window.GetWindow.WriteLine("Starting new game with " + NumbersOfTurnsToGo + " turns to go.");
             Game.GetGame.NewGame(playerOneName, playerTwoName);
             Game.GetGame.Play();
