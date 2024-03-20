@@ -1,0 +1,30 @@
+Question 3: Grâce à l'attribut de type Kind
+
+Question 5: La méthode NewGame de la classe Game
+
+Question 6: Ils sont stockés dans un Dictionary avec comme clé un string indiquant le libellé de la carte et comme valeur une instance de CardType
+
+Question 7: Il y a au départ 30 exemplaires de cartes de type Classroom.
+
+Question 8: Graphique:
+StartEverything
+PlayCard
+PlaceAllCards
+NewBuilding
+DrawStart
+DiscardStart
+TurnEnded
+PlayPhaseStart
+DisplayHand
+DiscardCard
+
+Logique:
+StartEverything
+EndTurn
+PlayCard
+PlaceAllCards
+DrawStart
+TurnEnded
+DiscardCard
+
+Question 10:
