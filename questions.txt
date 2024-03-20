@@ -24,6 +24,8 @@ EndTurn
 PlayCard
 PlaceAllCards
 DrawStart
+DrawOneCard
+DrawPhaseEnded
 TurnEnded
 DiscardCard
 
