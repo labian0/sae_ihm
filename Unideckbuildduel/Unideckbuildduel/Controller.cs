@@ -45,6 +45,8 @@ namespace Unideckbuildduel
             if (sd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 NumbersOfTurnsToGo = sd.TurnLimit;
+                playerOneName = sd.Player1Name;
+                playerTwoName = sd.Player2Name;
             }
             Window.GetWindow.WriteLine("Starting new game with " + NumbersOfTurnsToGo + " turns to go.");
             Game.GetGame.NewGame(playerOneName, playerTwoName);

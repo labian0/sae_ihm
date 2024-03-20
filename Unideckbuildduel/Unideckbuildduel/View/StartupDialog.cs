@@ -19,6 +19,10 @@ namespace Unideckbuildduel.View
         /// The limit of turns selected by the user
         /// </summary>
         public int TurnLimit { get { return (int)turnLimitNumericUpDown.Value; } }
+
+        public string Player1Name { get { return (string)player1Name.Text; } }
+
+        public string Player2Name { get { return (string)player2Name.Text; } }  
         /// <summary>
         /// Empty-parametered constructor
         /// </summary>

@@ -34,6 +34,8 @@
             this.turnsTextLabel = new System.Windows.Forms.Label();
             this.nameOneTextLabel = new System.Windows.Forms.Label();
             this.nameTwoTextLabel = new System.Windows.Forms.Label();
+            this.player1Name = new System.Windows.Forms.TextBox();
+            this.player2Name = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.turnLimitNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,11 +108,27 @@
             this.nameTwoTextLabel.TabIndex = 5;
             this.nameTwoTextLabel.Text = "Player two name:";
             // 
+            // player1Name
+            // 
+            this.player1Name.Location = new System.Drawing.Point(210, 102);
+            this.player1Name.Name = "player1Name";
+            this.player1Name.Size = new System.Drawing.Size(120, 20);
+            this.player1Name.TabIndex = 6;
+            // 
+            // player2Name
+            // 
+            this.player2Name.Location = new System.Drawing.Point(210, 145);
+            this.player2Name.Name = "player2Name";
+            this.player2Name.Size = new System.Drawing.Size(120, 20);
+            this.player2Name.TabIndex = 7;
+            // 
             // StartupDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 229);
+            this.Controls.Add(this.player2Name);
+            this.Controls.Add(this.player1Name);
             this.Controls.Add(this.nameTwoTextLabel);
             this.Controls.Add(this.nameOneTextLabel);
             this.Controls.Add(this.turnsTextLabel);
@@ -133,5 +151,7 @@
         private System.Windows.Forms.Label turnsTextLabel;
         private System.Windows.Forms.Label nameOneTextLabel;
         private System.Windows.Forms.Label nameTwoTextLabel;
+        private System.Windows.Forms.TextBox player1Name;
+        private System.Windows.Forms.TextBox player2Name;
     }
 }
