@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Unideckbuildduel.Logic.GameData;
@@ -78,6 +79,8 @@ namespace Unideckbuildduel.Logic
             {
                 case Kind.Building:
                     var reqBs = card.CardType.RequiredBuildings;
+                    var reqRs = card.CardType.RequiredRessources;
+                    List<Card> resourcesToRemove = new List<Card>(); ;
                     if (reqBs != null && reqBs.Count > 0)
                     {
                         bool reqBok = true;
@@ -93,9 +96,34 @@ namespace Unideckbuildduel.Logic
                         {
                             return ("Not enough required buildings", false);
                         }
+                        bool reqRok = true;
+                        foreach(CardType r in reqRs.Keys)
+                        {
+                            int presR = 0;
+                            foreach(Card c in cards[players[playerNum]])
+                            {
+                                if (c.CardType.Equals(r))
+                                {
+                                    presR++;
+                                    resourcesToRemove.Add(c);
+                                }
+                            }
+                            if (presR< reqRs[r])
+                            {
+                                reqRok = false;
+                            }
+                        }
+                        if (!reqRok)
+                        {
+                            return ("Not enough required resources", false);
+                        }
                     }
                     buildings[players[playerNum]].Add(card);
                     cards[players[playerNum]].Remove(card);
+                    foreach(Card r in resourcesToRemove)
+                    {
+                        cards[players[playerNum]].Remove(r);
+                    }
                     players[playerNum].Points += card.CardType.Points;
                     Controller.GetControler.NewBuilding(playerNum, card);
                     Controller.GetControler.DisplayHand(CurrentPlayer, cards[players[CurrentPlayer]]);
