@@ -50,7 +50,6 @@ namespace Unideckbuildduel.View
             g.DrawString(card.CardType.Kind.ToString(), ViewSettings.BaseFont, new SolidBrush(ViewSettings.TextColour), baseLine);
             baseLine.Offset(5, 10);
             g.DrawString(card.CardType.Name, ViewSettings.BaseFont, new SolidBrush(ViewSettings.TextColour), baseLine);
-            //...
         }
     }
 }

@@ -142,9 +142,24 @@ namespace Unideckbuildduel
         {
             if (NumbersOfTurnsToGo>0)
             {
-                if (NumbersOfTurnsToGo<Game.GetGame.Turn)
+                Window.GetWindow.WriteLine(Game.GetGame.Turn.ToString());
+                if (NumbersOfTurnsToGo-1<Game.GetGame.Turn)
                 {
                     Window.GetWindow.WriteLine("Game over");
+                    Window.GetWindow.DisableTurnButton();
+                    if (Game.GetGame.PlayerScore(0) > Game.GetGame.PlayerScore(1))
+                    {
+                        Window.GetWindow.WriteLine(PlayerOneScore + "a gagné");
+                    }
+                    else if (Game.GetGame.PlayerScore(0) < Game.GetGame.PlayerScore(1))
+                    {
+                        Window.GetWindow.WriteLine(PlayerTwoScore + "a gagné");
+                    }
+                    else
+                    {
+                        Window.GetWindow.WriteLine("Egalité");
+                    }
+
                 }
             }
             Window.GetWindow.WriteLine("Turn ended. It is now player " + PlayerName(currentPlayer)+"'s turn in turn number " + turn + ".");

@@ -29,4 +29,5 @@ DrawPhaseEnded
 TurnEnded
 DiscardCard
 
-Question 10:
+Question 10: La différence entre les deux méthodes Draw() est que le rectangle utilisé dans building est un attribut de classe de ViewSettings et dans CardView le rectangle est un de ses attributs propres.
+

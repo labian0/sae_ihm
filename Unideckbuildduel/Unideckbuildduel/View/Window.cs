@@ -135,5 +135,20 @@ namespace Unideckbuildduel.View
             Application.Exit();
         }
         #endregion
+
+        public void DisableTurnButton()
+        {
+            nextTurnButton.Enabled = false;
+            placeAllButton.Enabled = false;
+            restartButton.Visible = true;
+        }
+
+        private void restartButton_Click(object sender, EventArgs e)
+        {
+            nextTurnButton.Enabled = true;
+            placeAllButton.Enabled = true;
+            restartButton.Visible  = false;
+            Controller.GetControler.StartEverything();
+        }
     }
 }

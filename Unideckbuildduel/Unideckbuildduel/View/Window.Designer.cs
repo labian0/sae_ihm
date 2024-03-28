@@ -35,11 +35,12 @@
             this.turnLabel = new System.Windows.Forms.Label();
             this.playerTwoScoreLabel = new System.Windows.Forms.Label();
             this.playerOneScoreLabel = new System.Windows.Forms.Label();
+            this.restartButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // quitButton
             // 
-            this.quitButton.Location = new System.Drawing.Point(1064, 552);
+            this.quitButton.Location = new System.Drawing.Point(1064, 525);
             this.quitButton.Name = "quitButton";
             this.quitButton.Size = new System.Drawing.Size(75, 23);
             this.quitButton.TabIndex = 0;
@@ -57,7 +58,7 @@
             // 
             // placeAllButton
             // 
-            this.placeAllButton.Location = new System.Drawing.Point(1064, 523);
+            this.placeAllButton.Location = new System.Drawing.Point(1064, 496);
             this.placeAllButton.Name = "placeAllButton";
             this.placeAllButton.Size = new System.Drawing.Size(75, 23);
             this.placeAllButton.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // nextTurnButton
             // 
-            this.nextTurnButton.Location = new System.Drawing.Point(1064, 494);
+            this.nextTurnButton.Location = new System.Drawing.Point(1064, 467);
             this.nextTurnButton.Name = "nextTurnButton";
             this.nextTurnButton.Size = new System.Drawing.Size(75, 23);
             this.nextTurnButton.TabIndex = 3;
@@ -102,11 +103,23 @@
             this.playerOneScoreLabel.TabIndex = 6;
             this.playerOneScoreLabel.Text = "label1";
             // 
+            // restartButton
+            // 
+            this.restartButton.Location = new System.Drawing.Point(1064, 556);
+            this.restartButton.Name = "restartButton";
+            this.restartButton.Size = new System.Drawing.Size(75, 23);
+            this.restartButton.TabIndex = 7;
+            this.restartButton.Text = "Restart";
+            this.restartButton.UseVisualStyleBackColor = true;
+            this.restartButton.Visible = false;
+            this.restartButton.Click += new System.EventHandler(this.restartButton_Click);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.Controls.Add(this.restartButton);
             this.Controls.Add(this.playerOneScoreLabel);
             this.Controls.Add(this.playerTwoScoreLabel);
             this.Controls.Add(this.turnLabel);
@@ -132,6 +145,7 @@
         private System.Windows.Forms.Label turnLabel;
         private System.Windows.Forms.Label playerTwoScoreLabel;
         private System.Windows.Forms.Label playerOneScoreLabel;
+        private System.Windows.Forms.Button restartButton;
     }
 }
 
