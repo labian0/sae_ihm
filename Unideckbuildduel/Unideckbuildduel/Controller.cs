@@ -69,7 +69,10 @@ namespace Unideckbuildduel
             Window.GetWindow.WriteLine("Placing all possible cards for player "+ PlayerName(CurrentPlayer));
             for (int i=handSize-1; i>=0; i--)
             {
-                PlayCard(CurrentPlayer, i, true);
+                if (Game.GetGame.isPlayable(CurrentPlayer, i))
+                {
+                    PlayCard(CurrentPlayer, i, true);
+                }
             }
             EndTurn();
         }

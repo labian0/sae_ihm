@@ -18,7 +18,7 @@ namespace Unideckbuildduel.View
         /// The number of the card in the player's hand. Read only.
         /// </summary>
         public int CardNum { get; private set; }
-        private Rectangle Rect {  get { return new Rectangle(Location, ViewSettings.CardSize); } }
+        public Rectangle Rect {  get { return new Rectangle(Location, ViewSettings.CardSize); } }
 
         /// <summary>
         /// Parametered constructor.

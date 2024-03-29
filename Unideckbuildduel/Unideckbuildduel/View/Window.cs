@@ -68,7 +68,7 @@ namespace Unideckbuildduel.View
         /// <param name="card">The card to base the building on</param>
         public void AddNewBuilding(int playerNumber, Card card)
         {
-            Point point = playerNumber==0 ? playerOneBuildingCurrent : playerTwoBuildingCurrent;
+            Point point = playerNumber == 0 ? playerOneBuildingCurrent : playerTwoBuildingCurrent;
             Point start = playerNumber == 0 ? playerOneBuildingStart : playerTwoBuildingStart;
 
             buildingViews[playerNumber].Add(BuildingView.MakeBuildingOrNull(card.CardType, point));
@@ -80,15 +80,17 @@ namespace Unideckbuildduel.View
                 point.Y = point.Y + ViewSettings.BuildSize.Height + ViewSettings.Margin.Height;
             }
 
-            if (playerNumber==0)
+            if (playerNumber == 0)
             {
                 playerOneBuildingCurrent = point;
-            } else
+            }
+            else
             {
                 playerTwoBuildingCurrent = point;
             }
             Refresh();
         }
+
         /// <summary>
         /// Method called whenever the cards should be displayed
         /// </summary>
@@ -125,10 +127,6 @@ namespace Unideckbuildduel.View
             Controller.GetControler.EndTurn();
         }
 
-        private void PlaceAllButton_Click(object sender, EventArgs e)
-        {
-            Controller.GetControler.PlaceAllCards();
-        }
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
@@ -149,6 +147,23 @@ namespace Unideckbuildduel.View
             placeAllButton.Enabled = true;
             restartButton.Visible  = false;
             Controller.GetControler.StartEverything();
+        }
+
+        private void Window_MouseClick(object sender, MouseEventArgs e)
+        {
+            foreach (CardView card in cardViews)
+            {
+                if (card.Rect.Contains(e.Location))
+                {
+                    Game.GetGame.PlayCard(Game.GetGame.CurrentPlayer, card.CardNum);
+                    break;
+                }
+            }
+        }
+
+        private void placeAllButton_Click(object sender, EventArgs e)
+        {
+            Controller.GetControler.PlaceAllCards();
         }
     }
 }

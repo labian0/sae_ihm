@@ -97,20 +97,23 @@ namespace Unideckbuildduel.Logic
                             return ("Not enough required buildings", false);
                         }
                         bool reqRok = true;
-                        foreach(CardType r in reqRs.Keys)
+                        if (reqRs != null && reqRs.Count > 0)
                         {
-                            int presR = 0;
-                            foreach(Card c in cards[players[playerNum]])
+                            foreach (CardType r in reqRs.Keys)
                             {
-                                if (c.CardType.Equals(r))
+                                int presR = 0;
+                                foreach (Card c in cards[players[playerNum]])
                                 {
-                                    presR++;
-                                    resourcesToRemove.Add(c);
+                                    if (c.CardType.Equals(r) && !resourcesToRemove.Contains(c))
+                                    {
+                                        presR++;
+                                        resourcesToRemove.Add(c);
+                                    }
                                 }
-                            }
-                            if (presR< reqRs[r])
-                            {
-                                reqRok = false;
+                                if (presR < reqRs[r])
+                                {
+                                    reqRok = false;
+                                }
                             }
                         }
                         if (!reqRok)
@@ -219,6 +222,18 @@ namespace Unideckbuildduel.Logic
         public void DrawPhaseEnded()
         {
             GameStatus = GameStatus.Playing;
+        }
+
+        public bool isPlayable(int currentPlayer, int cardNum)
+        {
+            if (cards[players[currentPlayer]][cardNum].CardType.RequiredRessources != null)
+            {
+                return cards[players[currentPlayer]][cardNum].CardType.RequiredRessources.Count == 0;
+            }
+            else
+            {
+                return true;
+            }
         }
         /// <summary>
         /// Read-only access to the players' names
