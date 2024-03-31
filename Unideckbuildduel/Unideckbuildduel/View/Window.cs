@@ -45,6 +45,7 @@ namespace Unideckbuildduel.View
             playerTwoBuildingStart = new Point(25, 370);
             playerOneBuildingCurrent=playerOneBuildingStart;
             playerTwoBuildingCurrent=playerTwoBuildingStart;
+            UpdateStack();
 
         }
         /// <summary>
@@ -159,11 +160,18 @@ namespace Unideckbuildduel.View
                     break;
                 }
             }
+            UpdateStack();
         }
 
         private void placeAllButton_Click(object sender, EventArgs e)
         {
             Controller.GetControler.PlaceAllCards();
+        }
+
+        private void UpdateStack()
+        {
+            deckLabel.Text = "Pioche : " + Game.GetGame.GetCommonDeckLenght;
+            discardLabel.Text = "Defausse : " + Game.GetGame.GetDiscardLenght;
         }
     }
 }

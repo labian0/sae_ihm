@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Unideckbuildduel.Logic.GameData;
@@ -14,6 +15,7 @@ namespace Unideckbuildduel.Logic
     public class Game
     {
         private Stack<Card> commonDeck;
+        private Stack<Card> discard;
         private List<Player> players;
         private Dictionary<Player, List<Card>> cards;
         private Dictionary<Player, List<Card>> buildings;
@@ -22,6 +24,11 @@ namespace Unideckbuildduel.Logic
         /// A reference to the single instance of this class
         /// </summary>
         public static Game GetGame { get; } = new Game();
+
+        public int GetCommonDeckLenght { get { return commonDeck != null ? commonDeck.Count : 0; } }
+
+        public int GetDiscardLenght { get { return discard != null ? discard.Count : 0; } }
+
         /// <summary>
         /// Turn number (from 0)
         /// </summary>
@@ -41,6 +48,7 @@ namespace Unideckbuildduel.Logic
         public void NewGame(string playerOneName, string playerTwoName)
         {
             commonDeck = LoadData.GenStack();
+            discard = new Stack<Card>();
             players = new List<Player> { new Player { Name = playerOneName }, new Player { Name = playerTwoName } };
             cards = new Dictionary<Player, List<Card>>();
             buildings = new Dictionary<Player, List<Card>>();
@@ -198,6 +206,7 @@ namespace Unideckbuildduel.Logic
         private bool DiscardCard(int playerNum, Card card)
         {
             if (card == null) { return false; }
+            discard.Push(card);
             return cards[players[playerNum]].Remove(card);
         }
         /// <summary>
@@ -210,10 +219,15 @@ namespace Unideckbuildduel.Logic
             if (PlayerHandSize(num)<=PlayerCardCount(num)) { return null; }
             if (commonDeck.Count <= 0)
             {
-                commonDeck = LoadData.GenStack(); // Deck reload!
+                commonDeck = ShuffleStack(discard);// Deck reload!
+                discard = new Stack<Card>();
             }
-            Card c = commonDeck.Pop();
-            cards[players[num]].Add(c);
+            Card c = null;
+            if (commonDeck.Count > 0)
+            {
+                c = commonDeck.Pop();
+                cards[players[num]].Add(c);
+            }
             return c;
         }
         /// <summary>
@@ -259,6 +273,23 @@ namespace Unideckbuildduel.Logic
         /// <param name="num">The number of the player</param>
         /// <returns>The player's number of cards</returns>
         public int PlayerCardCount(int num) => cards[players[num]].Count;
+
+        public Stack<Card> ShuffleStack(Stack<Card> stack)
+        {
+            Random random = new Random();
+            List<Card> list = stack.ToList();
+            for (int i = list.Count - 1; i > 0; i--)
+            {
+                int r = random.Next(i + 1);
+                (list[i], list[r]) = (list[r], list[i]);
+            }
+            Stack<Card> newStack = new Stack<Card>();
+            foreach (Card card in list)
+            {
+                newStack.Push(card);
+            }
+            return newStack;
+        }
 
     }
 }

@@ -38,6 +38,8 @@ namespace Unideckbuildduel.View
             this.playerOneScoreLabel = new System.Windows.Forms.Label();
             this.restartButton = new System.Windows.Forms.Button();
             this.placeAllButton = new System.Windows.Forms.Button();
+            this.deckLabel = new System.Windows.Forms.Label();
+            this.discardLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // quitButton
@@ -116,11 +118,33 @@ namespace Unideckbuildduel.View
             this.placeAllButton.UseVisualStyleBackColor = true;
             this.placeAllButton.Click += new System.EventHandler(this.placeAllButton_Click);
             // 
+            // deckLabel
+            // 
+            this.deckLabel.AutoSize = true;
+            this.deckLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deckLabel.Location = new System.Drawing.Point(782, 229);
+            this.deckLabel.Name = "deckLabel";
+            this.deckLabel.Size = new System.Drawing.Size(69, 20);
+            this.deckLabel.TabIndex = 9;
+            this.deckLabel.Text = "Pioche : ";
+            // 
+            // discardLabel
+            // 
+            this.discardLabel.AutoSize = true;
+            this.discardLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.discardLabel.Location = new System.Drawing.Point(782, 262);
+            this.discardLabel.Name = "discardLabel";
+            this.discardLabel.Size = new System.Drawing.Size(90, 20);
+            this.discardLabel.TabIndex = 10;
+            this.discardLabel.Text = "Defausse : ";
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.Controls.Add(this.discardLabel);
+            this.Controls.Add(this.deckLabel);
             this.Controls.Add(this.placeAllButton);
             this.Controls.Add(this.restartButton);
             this.Controls.Add(this.playerOneScoreLabel);
@@ -149,6 +173,8 @@ namespace Unideckbuildduel.View
         private System.Windows.Forms.Label playerOneScoreLabel;
         private System.Windows.Forms.Button restartButton;
         private System.Windows.Forms.Button placeAllButton;
+        private System.Windows.Forms.Label deckLabel;
+        private System.Windows.Forms.Label discardLabel;
     }
 }
 

@@ -74,7 +74,6 @@ namespace Unideckbuildduel
                     PlayCard(CurrentPlayer, i, true);
                 }
             }
-            EndTurn();
         }
         /// <summary>
         /// Play one card (place, for buildings).
@@ -122,7 +121,11 @@ namespace Unideckbuildduel
                 for (int i=0; i<toDraw; i++)
                 {
                     Card c = Game.GetGame.DrawOneCard(num);
-                    Window.GetWindow.WriteLine("Draw: " + c.CardType.Name);
+                    if (c != null)
+                    {
+                        Window.GetWindow.WriteLine("Draw: " + c.CardType.Name);
+                    }
+                    
                 }
             }
             Game.GetGame.DrawPhaseEnded();
