@@ -44,9 +44,9 @@ namespace Unideckbuildduel.View
             // 
             // quitButton
             // 
-            this.quitButton.Location = new System.Drawing.Point(1064, 525);
+            this.quitButton.Location = new System.Drawing.Point(1100, 555);
             this.quitButton.Name = "quitButton";
-            this.quitButton.Size = new System.Drawing.Size(75, 23);
+            this.quitButton.Size = new System.Drawing.Size(75, 21);
             this.quitButton.TabIndex = 0;
             this.quitButton.Text = "Quit";
             this.quitButton.UseVisualStyleBackColor = true;
@@ -62,9 +62,9 @@ namespace Unideckbuildduel.View
             // 
             // nextTurnButton
             // 
-            this.nextTurnButton.Location = new System.Drawing.Point(1064, 467);
+            this.nextTurnButton.Location = new System.Drawing.Point(1100, 474);
             this.nextTurnButton.Name = "nextTurnButton";
-            this.nextTurnButton.Size = new System.Drawing.Size(75, 23);
+            this.nextTurnButton.Size = new System.Drawing.Size(75, 21);
             this.nextTurnButton.TabIndex = 3;
             this.nextTurnButton.Text = "Next Turn";
             this.nextTurnButton.UseVisualStyleBackColor = true;
@@ -99,9 +99,9 @@ namespace Unideckbuildduel.View
             // 
             // restartButton
             // 
-            this.restartButton.Location = new System.Drawing.Point(1064, 556);
+            this.restartButton.Location = new System.Drawing.Point(1100, 528);
             this.restartButton.Name = "restartButton";
-            this.restartButton.Size = new System.Drawing.Size(75, 23);
+            this.restartButton.Size = new System.Drawing.Size(75, 21);
             this.restartButton.TabIndex = 7;
             this.restartButton.Text = "Restart";
             this.restartButton.UseVisualStyleBackColor = true;
@@ -110,9 +110,9 @@ namespace Unideckbuildduel.View
             // 
             // placeAllButton
             // 
-            this.placeAllButton.Location = new System.Drawing.Point(1064, 496);
+            this.placeAllButton.Location = new System.Drawing.Point(1100, 501);
             this.placeAllButton.Name = "placeAllButton";
-            this.placeAllButton.Size = new System.Drawing.Size(75, 23);
+            this.placeAllButton.Size = new System.Drawing.Size(75, 21);
             this.placeAllButton.TabIndex = 8;
             this.placeAllButton.Text = "Place all";
             this.placeAllButton.UseVisualStyleBackColor = true;

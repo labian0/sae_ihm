@@ -125,7 +125,8 @@ namespace Unideckbuildduel.View
 
         private void NextTurnButton_Click(object sender, EventArgs e)
         {
-            Controller.GetControler.EndTurn();
+            if (Game.GetGame.GameStatus == GameStatus.Playing) Game.GetGame.PlayPhaseEnded();
+            else Controller.GetControler.EndTurn();
         }
 
 
@@ -156,7 +157,10 @@ namespace Unideckbuildduel.View
             {
                 if (card.Rect.Contains(e.Location))
                 {
-                    Game.GetGame.PlayCard(Game.GetGame.CurrentPlayer, card.CardNum);
+                    if (Game.GetGame.GameStatus == GameStatus.Playing)
+                        Game.GetGame.PlayCard(Game.GetGame.CurrentPlayer, card.CardNum);
+                    else if (Game.GetGame.GameStatus == GameStatus.Discarding)
+                        Game.GetGame.DiscardCard(Game.GetGame.CurrentPlayer, card.CardNum);
                     break;
                 }
             }
@@ -172,6 +176,17 @@ namespace Unideckbuildduel.View
         {
             deckLabel.Text = "Pioche : " + Game.GetGame.GetCommonDeckLenght;
             discardLabel.Text = "Defausse : " + Game.GetGame.GetDiscardLenght;
+        }
+        public void updateNextTurnButtonLabel()
+        {
+            if(Game.GetGame.GameStatus == GameStatus.Playing)
+            {
+                nextTurnButton.Text = "Discard";
+            }
+            else
+            {
+                nextTurnButton.Text = "Next Turn";
+            }
         }
     }
 }

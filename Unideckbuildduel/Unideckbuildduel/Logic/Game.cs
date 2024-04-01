@@ -6,6 +6,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Unideckbuildduel.Logic.GameData;
+using Unideckbuildduel.View;
 
 namespace Unideckbuildduel.Logic
 {
@@ -236,6 +237,13 @@ namespace Unideckbuildduel.Logic
         public void DrawPhaseEnded()
         {
             GameStatus = GameStatus.Playing;
+            Window.GetWindow.updateNextTurnButtonLabel();
+        }
+
+        public void PlayPhaseEnded()
+        {
+            GameStatus = GameStatus.Discarding;
+            Window.GetWindow.updateNextTurnButtonLabel();
         }
 
         public bool isPlayable(int currentPlayer, int cardNum)
