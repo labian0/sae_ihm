@@ -8,7 +8,7 @@ namespace Unideckbuildduel.View
     /// </summary>
     public class CardView
     {
-        private readonly Card card;
+        public readonly Card card;
         private readonly Color colour;
         /// <summary>
         /// The location, relative to the window.

@@ -21,3 +21,4 @@ Z:\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuil
 \\iut.bx\Etudiants\Home\zcapdeville\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.csproj.CoreCompileInputs.cache
 \\iut.bx\Etudiants\Home\zcapdeville\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.exe
 \\iut.bx\Etudiants\Home\zcapdeville\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.pdb
+\\iut.bx\Etudiants\Home\zcapdeville\Documents\IHM\sae_ihm\Unideckbuildduel\Unideckbuildduel\obj\Debug\Unideckbuildduel.csproj.SuggestedBindingRedirects.cache

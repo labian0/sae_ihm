@@ -17,8 +17,8 @@ namespace Unideckbuildduel.Logic
     {
         private Stack<Card> commonDeck;
         private Stack<Card> discard;
-        private List<Player> players;
-        private Dictionary<Player, List<Card>> cards;
+        public List<Player> players;
+        public Dictionary<Player, List<Card>> cards;
         private Dictionary<Player, List<Card>> buildings;
 
         /// <summary>
@@ -29,7 +29,6 @@ namespace Unideckbuildduel.Logic
         public int GetCommonDeckLenght { get { return commonDeck != null ? commonDeck.Count : 0; } }
 
         public int GetDiscardLenght { get { return discard != null ? discard.Count : 0; } }
-
         /// <summary>
         /// Turn number (from 0)
         /// </summary>
@@ -84,6 +83,7 @@ namespace Unideckbuildduel.Logic
         private (string msg, bool ok) PlayCard(int playerNum, Card card)
         {
             if (card == null) { return ("Card playing error", false); }
+            if (card.CardType.Effect == Effect.OneMoreCard) { players[playerNum].HandSize = 6; }
             switch (card.CardType.Kind)
             {
                 case Kind.Building:
@@ -140,6 +140,13 @@ namespace Unideckbuildduel.Logic
                     Controller.GetControler.NewBuilding(playerNum, card);
                     Controller.GetControler.DisplayHand(CurrentPlayer, cards[players[CurrentPlayer]]);
                     return (null, true);
+
+                case Kind.Action:
+                    cards[players[playerNum]].Remove(card);
+                    discard.Push(card);
+                    Controller.GetControler.DisplayHand(CurrentPlayer, cards[players[CurrentPlayer]]);
+                    return (null, true);
+
                 default:
                     return ("Card type not handled yet", false);
             }

@@ -153,17 +153,29 @@ namespace Unideckbuildduel.View
 
         private void Window_MouseClick(object sender, MouseEventArgs e)
         {
-            foreach (CardView card in cardViews)
-            {
-                if (card.Rect.Contains(e.Location))
+                for (int i = 0; i < cardViews.Count; i++)
                 {
-                    if (Game.GetGame.GameStatus == GameStatus.Playing)
-                        Game.GetGame.PlayCard(Game.GetGame.CurrentPlayer, card.CardNum);
-                    else if (Game.GetGame.GameStatus == GameStatus.Discarding)
-                        Game.GetGame.DiscardCard(Game.GetGame.CurrentPlayer, card.CardNum);
-                    break;
+                    if (cardViews[i].Rect.Contains(e.Location))
+                    {
+                        if (Game.GetGame.GameStatus == GameStatus.Playing)
+                        {
+                            if (e.Button == MouseButtons.Left)
+                            {
+                                Game.GetGame.PlayCard(Game.GetGame.CurrentPlayer, cardViews[i].CardNum);
+                            }
+                            else if (e.Button == MouseButtons.Right && cardViews[i].card.CardType.Effect == Effect.CanExchange)
+                            {
+                                Game.GetGame.DiscardCard(Game.GetGame.CurrentPlayer, cardViews[i].CardNum);
+                                Game.GetGame.DrawOneCard(Game.GetGame.CurrentPlayer);
+                            }
+                        }
+                        else if (Game.GetGame.GameStatus == GameStatus.Discarding)
+                        { 
+                            Game.GetGame.DiscardCard(Game.GetGame.CurrentPlayer, cardViews[i].CardNum);
+                            break;
+                        }
+                    }
                 }
-            }
             UpdateStack();
         }
 
@@ -188,5 +200,7 @@ namespace Unideckbuildduel.View
                 nextTurnButton.Text = "Next Turn";
             }
         }
+
+
     }
 }
