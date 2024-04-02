@@ -202,13 +202,16 @@ namespace Unideckbuildduel.Logic
         public bool DiscardCard(int playerNum, int cardNum)
         {
             Card card = cards[players[playerNum]][cardNum];
+            Window.GetWindow.Refresh();
             return DiscardCard(playerNum, card);
         }
         private bool DiscardCard(int playerNum, Card card)
         {
             if (card == null) { return false; }
             discard.Push(card);
-            return cards[players[playerNum]].Remove(card);
+            bool ok = cards[players[playerNum]].Remove(card);
+            Window.GetWindow.CardsForPlayer(playerNum, cards[players[playerNum]]);
+            return ok;
         }
         /// <summary>
         /// Draw one card for a player from the deck
