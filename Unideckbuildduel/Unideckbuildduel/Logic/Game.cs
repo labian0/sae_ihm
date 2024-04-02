@@ -89,7 +89,7 @@ namespace Unideckbuildduel.Logic
             if (card.CardType.Effect == Effect.OneMoreCard) { players[playerNum].HandSize = 6; }
             if (card.CardType.Effect == Effect.DrawOncePerTurn)
             {
-
+                Window.GetWindow.InitDrawOncePerTurnButton(playerNum, card.CardType.EffectCard.Name);
             }
             switch (card.CardType.Kind)
             {
