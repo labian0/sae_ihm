@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unideckbuildduel.Logic;
+using Unideckbuildduel.Logic.GameData;
 using Unideckbuildduel.View;
 
 namespace Unideckbuildduel.View
@@ -25,6 +26,8 @@ namespace Unideckbuildduel.View
         private Point playerTwoBuildingStart;
         private Point playerOneBuildingCurrent;
         private Point playerTwoBuildingCurrent;
+        private int playerDrawOnceNum = -1;
+        private string playerDrawOnceCardType = "";
         /// <summary>
         /// A reference to the single instance of this class
         /// </summary>
@@ -189,7 +192,7 @@ namespace Unideckbuildduel.View
             deckLabel.Text = "Pioche : " + Game.GetGame.GetCommonDeckLenght;
             discardLabel.Text = "Defausse : " + Game.GetGame.GetDiscardLenght;
         }
-        public void updateNextTurnButtonLabel()
+        public void UpdateNextTurnButtonLabel()
         {
             if(Game.GetGame.GameStatus == GameStatus.Playing)
             {
@@ -201,6 +204,24 @@ namespace Unideckbuildduel.View
             }
         }
 
+        public void InitDrawOncePerTurnButton(int numPlayer, string cardTypeName)
+        {
+            Player player = Game.GetGame.players[numPlayer];
+            playerDrawOnceCardType = cardTypeName;
+            playerDrawOnceNum = numPlayer;
+            DrawOncePerTurnButton.Text = "Piocher pour une carte de type " + cardTypeName;
+            DrawOncePerTurnButton.Visible = true;
+        }
 
+        private void DrawOncePerTurnButton_Click(object sender, EventArgs e)
+        {
+            if (playerDrawOnceNum != -1) Game.GetGame.DrawOncePerTurn(playerDrawOnceNum,playerDrawOnceCardType);
+
+            DrawOncePerTurnButton.Visible = false;
+            DrawOncePerTurnButton.Text = "";
+            playerDrawOnceNum = -1;
+            playerDrawOnceCardType = "";
+            Refresh();
+        }
     }
 }

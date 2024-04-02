@@ -20,6 +20,7 @@ namespace Unideckbuildduel.Logic
         public List<Player> players;
         public Dictionary<Player, List<Card>> cards;
         private Dictionary<Player, List<Card>> buildings;
+        public Dictionary<Player, string> playerDrawOnceCardType;
 
         /// <summary>
         /// A reference to the single instance of this class
@@ -52,11 +53,13 @@ namespace Unideckbuildduel.Logic
             players = new List<Player> { new Player { Name = playerOneName }, new Player { Name = playerTwoName } };
             cards = new Dictionary<Player, List<Card>>();
             buildings = new Dictionary<Player, List<Card>>();
+            playerDrawOnceCardType = new Dictionary<Player, string>();
             foreach (Player p in players)
             {
                 p.Number = players.IndexOf(p);
                 cards.Add(p, new List<Card>());
                 buildings.Add(p, new List<Card>());
+                playerDrawOnceCardType.Add(p, null);
             }
             GameStatus = GameStatus.TurnStart;
             CurrentPlayer = 0;
@@ -84,6 +87,10 @@ namespace Unideckbuildduel.Logic
         {
             if (card == null) { return ("Card playing error", false); }
             if (card.CardType.Effect == Effect.OneMoreCard) { players[playerNum].HandSize = 6; }
+            if (card.CardType.Effect == Effect.DrawOncePerTurn)
+            {
+
+            }
             switch (card.CardType.Kind)
             {
                 case Kind.Building:
@@ -200,6 +207,24 @@ namespace Unideckbuildduel.Logic
                     break;
             }
         }
+        public void DrawOncePerTurn(int numPlayer, string cardTypeName)
+        {
+            Player player = players[numPlayer];
+            Card card = null;
+            Stack<Card> newDeck = new Stack<Card>();
+            while (commonDeck.Count != 0)
+            {
+                Card topCard = commonDeck.Pop();
+                if(card == null && topCard.CardType.Name == cardTypeName) card = topCard;
+                else newDeck.Push(topCard);
+            }
+            commonDeck = newDeck;
+            if (card == null) return;
+            if (cards[player].Count < player.HandSize)
+            {
+                cards[player].Add(card);
+            }
+        }
         /// <summary>
         /// Method called to discard a specific card.
         /// </summary>
@@ -247,13 +272,13 @@ namespace Unideckbuildduel.Logic
         public void DrawPhaseEnded()
         {
             GameStatus = GameStatus.Playing;
-            Window.GetWindow.updateNextTurnButtonLabel();
+            Window.GetWindow.UpdateNextTurnButtonLabel();
         }
 
         public void PlayPhaseEnded()
         {
             GameStatus = GameStatus.Discarding;
-            Window.GetWindow.updateNextTurnButtonLabel();
+            Window.GetWindow.UpdateNextTurnButtonLabel();
         }
 
         public bool isPlayable(int currentPlayer, int cardNum)

@@ -40,6 +40,7 @@ namespace Unideckbuildduel.View
             this.placeAllButton = new System.Windows.Forms.Button();
             this.deckLabel = new System.Windows.Forms.Label();
             this.discardLabel = new System.Windows.Forms.Label();
+            this.DrawOncePerTurnButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // quitButton
@@ -138,11 +139,22 @@ namespace Unideckbuildduel.View
             this.discardLabel.TabIndex = 10;
             this.discardLabel.Text = "Defausse : ";
             // 
+            // DrawOncePerTurnButton
+            // 
+            this.DrawOncePerTurnButton.Location = new System.Drawing.Point(786, 456);
+            this.DrawOncePerTurnButton.Name = "DrawOncePerTurnButton";
+            this.DrawOncePerTurnButton.Size = new System.Drawing.Size(75, 21);
+            this.DrawOncePerTurnButton.TabIndex = 11;
+            this.DrawOncePerTurnButton.UseVisualStyleBackColor = true;
+            this.DrawOncePerTurnButton.Visible = false;
+            this.DrawOncePerTurnButton.Click += new System.EventHandler(this.DrawOncePerTurnButton_Click);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.Controls.Add(this.DrawOncePerTurnButton);
             this.Controls.Add(this.discardLabel);
             this.Controls.Add(this.deckLabel);
             this.Controls.Add(this.placeAllButton);
@@ -175,6 +187,7 @@ namespace Unideckbuildduel.View
         private System.Windows.Forms.Button placeAllButton;
         private System.Windows.Forms.Label deckLabel;
         private System.Windows.Forms.Label discardLabel;
+        private System.Windows.Forms.Button DrawOncePerTurnButton;
     }
 }
 
